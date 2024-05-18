@@ -6,7 +6,7 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:00:33 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/15 16:06:22 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/16 22:00:21 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(void)
 
 	fd = open("test", O_RDONLY);
 	printf("%d\n", fd);
+	printf("%s\n", get_next_line(fd));
 	printf("%s\n", get_next_line(fd));
 	printf("%s\n", get_next_line(fd));
 	return (0);

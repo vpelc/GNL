@@ -6,62 +6,50 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:59:48 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/15 15:39:48 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/18 13:16:51 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen( char *c)
+size_t	ft_strlen(char *c)
 {
 	size_t	i;
 
 	i = 0;
-	while (c[i] != '\0')
+	if (!c)
+		return (0);
+	while (c[i])
 		i++;
 	return (i);
 }
 
-static	char	*ft_strj(char *s1, char *s2, char *join, size_t len)
+char	*ft_strjoin(char *buffer, char *read_buffer)
 {
+	char	*join;
 	size_t	i;
 	size_t	j;
 
+	join = malloc((ft_strlen(buffer) + ft_strlen(read_buffer) + 1));
+	if (!join)
+		return (NULL);
 	i = 0;
+	while (buffer[i])
+	{
+		join[i] = buffer[i];
+		i++;
+	}
 	j = 0;
-	while (i < (len - ft_strlen(s2)))
+	while (read_buffer[j])
 	{
-		join[j] = s1[i];
+		join[i + j] = read_buffer[j];
 		j++;
-		i++;
 	}
-	i = 0;
-	while (j < len)
-	{
-		join[j] = s2[i];
-		j++;
-		i++;
-	}
-	join[j] = '\0';
+	join[i + j] = '\0';
 	return (join);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*join;
-	size_t	len;
-
-	if (!s1 || !s2)
-		return (0);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	join = malloc(sizeof(char) * (len + 1));
-	if (join == 0)
-		return (0);
-	ft_strj(s1, s2, join, len);
-	return (join);
-}
-
-char	*ft_strchr( char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	size_t	i;
 	size_t	n;
@@ -77,24 +65,8 @@ char	*ft_strchr( char *s, int c)
 	return (str + i);
 }
 
-char	*ft_strdup( char *s)
+void	ft_free(char **buffer)
 {
-	char	*dup;
-	size_t	len;
-	size_t	i;
-
-	if (!s)
-		return (0);
-	len = ft_strlen(s);
-	dup = malloc(sizeof(char) * (len + 1));
-	if (!dup)
-		return (free(dup), NULL);
-	i = 0;
-	while (i < len)
-	{
-		dup[i] = s[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
+	free(*buffer);
+	*buffer = NULL;
 }
