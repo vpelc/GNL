@@ -6,7 +6,7 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:59:48 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/18 13:16:51 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/20 23:12:52 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,38 +31,36 @@ char	*ft_strjoin(char *buffer, char *read_buffer)
 	size_t	j;
 
 	join = malloc((ft_strlen(buffer) + ft_strlen(read_buffer) + 1));
-	if (!join)
-		return (NULL);
+	if (!join || !buffer || !read_buffer)
+		return (ft_free(&buffer), ft_free(&read_buffer), NULL);
 	i = 0;
-	while (buffer[i])
+	while (buffer && buffer[i])
 	{
 		join[i] = buffer[i];
 		i++;
 	}
 	j = 0;
-	while (read_buffer[j])
+	while (buffer && read_buffer[j])
 	{
 		join[i + j] = read_buffer[j];
 		j++;
 	}
 	join[i + j] = '\0';
-	return (join);
+	return (ft_free(&buffer), ft_free(&read_buffer), join);
 }
 
-char	*ft_strchr(char *s, int c)
+int	ft_strchr(char *s)
 {
 	size_t	i;
-	size_t	n;
-	char	*str;
 
-	i = 0;
-	str = (char *)s;
-	n = ft_strlen(str);
-	while (i <= n && str[i] != (unsigned char)c)
-		i++;
-	if (i > n)
+	if (!s)
 		return (0);
-	return (str + i);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	if (s[i] == '\n')
+		return (1);
+	return (0);
 }
 
 void	ft_free(char **buffer)
