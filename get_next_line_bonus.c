@@ -6,7 +6,7 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:59:18 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/22 16:08:28 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/22 17:18:27 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,8 @@ char	*get_next_line(int fd)
 	static char	*buffer[OPEN_MAX];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0
+		||BUFFER_SIZE >= 2147483647 || read(fd, 0, 0) < 0)
 		return (ft_free(&buffer[fd]), NULL);
 	if (!buffer[fd])
 	{
