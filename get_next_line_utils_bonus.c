@@ -6,7 +6,7 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:59:48 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/22 16:09:09 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/24 17:29:52 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ int	ft_strchr(char *s)
 
 void	ft_free(char **buffer)
 {
-	free(*buffer);
-	*buffer = NULL;
+	if (buffer)
+	{
+		free(*buffer);
+		*buffer = NULL;
+	}
 }
