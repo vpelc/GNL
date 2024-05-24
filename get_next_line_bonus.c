@@ -6,7 +6,7 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:59:18 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/24 17:25:16 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/24 18:23:29 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,4 @@ char	*get_next_line(int fd)
 	if (!(ft_strchr(line)))
 		ft_free(&buffer[fd]);
 	return (line);
-}
-
-int main (void)
-{
-	get_next_line(41406540);
 }
