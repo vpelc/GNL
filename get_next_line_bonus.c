@@ -6,13 +6,13 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:59:18 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/24 18:23:29 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/27 16:42:02 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*ft_fill_buff(int fd, char *buffer)
+static char	*ft_fill_buff(int fd, char *buffer)
 {
 	int		read_count;
 	char	*read_buffer;
@@ -35,13 +35,13 @@ char	*ft_fill_buff(int fd, char *buffer)
 	return (buffer);
 }
 
-char	*ft_get_line(char *buffer)
+static char	*ft_get_line(char *buffer)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
-	if (!buffer[i])
+	if (!buffer || !buffer[i])
 		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
@@ -62,7 +62,7 @@ char	*ft_get_line(char *buffer)
 	return (line);
 }
 
-char	*ft_fill_next_buff(char *buffer)
+static char	*ft_fill_next_buff(char *buffer)
 {
 	char	*next_buffer;
 	int		i;
@@ -70,7 +70,7 @@ char	*ft_fill_next_buff(char *buffer)
 
 	i = 0;
 	j = 0;
-	if (!buffer[i])
+	if (!buffer || !buffer[i])
 		return (ft_free(&buffer), NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;

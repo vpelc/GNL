@@ -6,7 +6,7 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 22:00:02 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/21 20:51:02 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/27 16:04:41 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,9 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_fill_buff(int fd, char *buffer);
-char	*ft_get_line(char *buffer);
-char	*ft_fill_next_buff(char *buffer);
 char	*ft_strjoin(char *buffer, char *read_buffer);
 int		ft_strchr(char *s);
 size_t	ft_strlen(char *c);
 void	ft_free(char **buffer);
-char	*ft_join(char *buffer, char *read_buffer);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:59:48 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/24 18:23:56 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/24 20:17:42 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *c)
 {
