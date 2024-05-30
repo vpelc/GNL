@@ -6,7 +6,7 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:59:48 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/24 18:23:41 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/30 14:40:38 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strjoin(char *buffer, char *read_buffer)
 
 	join = malloc((ft_strlen(buffer) + ft_strlen(read_buffer) + 1));
 	if (!join || !buffer || !read_buffer)
-		return (ft_free(&buffer), ft_free(&read_buffer), NULL);
+		return (ft_free(&buffer), ft_free(&read_buffer), ft_free(&join), NULL);
 	i = 0;
 	while (buffer && buffer[i])
 	{

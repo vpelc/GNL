@@ -6,7 +6,7 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:59:18 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/27 16:33:26 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/30 14:53:23 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,3 +115,16 @@ char	*get_next_line(int fd)
 		ft_free(&buffer);
 	return (line);
 }
+/*
+#include <fcntl.h>
+int	main(void)
+{
+	int	fd;
+
+	fd = open("open-1", O_RDONLY);
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	return (0);
+}*/
