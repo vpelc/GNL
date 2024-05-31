@@ -6,7 +6,7 @@
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:59:18 by vpelc             #+#    #+#             */
-/*   Updated: 2024/05/30 14:53:23 by vpelc            ###   ########.fr       */
+/*   Updated: 2024/05/31 17:28:21 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static char	*ft_fill_next_buff(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer = NULL;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0
@@ -115,16 +115,18 @@ char	*get_next_line(int fd)
 		ft_free(&buffer);
 	return (line);
 }
-/*
-#include <fcntl.h>
+
+/* #include <fcntl.h>
 int	main(void)
 {
 	int	fd;
+	char	*s;
 
-	fd = open("open-1", O_RDONLY);
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
+	fd = open("test", O_RDONLY);
+	while ((s = get_next_line(fd)) != NULL)
+	{
+		printf("%s", s);
+		free(s);
+	}
 	return (0);
-}*/
+} */
