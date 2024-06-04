@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpelc <vpelc@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 22:04:06 by vpelc             #+#    #+#             */
-/*   Updated: 2024/06/04 16:54:29 by vpelc            ###   ########.fr       */
+/*   Created: 2024/06/04 15:32:31 by vpelc             #+#    #+#             */
+/*   Updated: 2024/06/04 16:53:07 by vpelc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 static char	*ft_fill_buff(char *buffer, int fd)
 {
@@ -89,25 +89,42 @@ static char	*ft_fill_nextbuff(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer[OPEN_MAX];
+	static char	*buffer;
 	char		*line;
 
 	if ((fd < 0 || fd >= OPEN_MAX)
 		|| (BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647))
-		return (ft_free(&buffer[fd]), NULL);
-	if (!buffer[fd])
+		return (ft_free(&buffer), NULL);
+	if (!buffer)
 	{
-		buffer[fd] = malloc(sizeof(char) * 1);
-		if (!buffer[fd])
+		buffer = malloc(sizeof(char) * 1);
+		if (!buffer)
 			return (NULL);
-		buffer[fd][0] = '\0';
+		buffer[0] = '\0';
 	}
-	buffer[fd] = ft_fill_buff(buffer[fd], fd);
-	if (!buffer[fd])
+	buffer = ft_fill_buff(buffer, fd);
+	if (!buffer)
 		return (NULL);
-	line = ft_fill_line(buffer[fd]);
-	buffer[fd] = ft_fill_nextbuff(buffer[fd]);
+	line = ft_fill_line(buffer);
+	buffer = ft_fill_nextbuff(buffer);
 	if (!(ft_strchr(line)))
-		ft_free(&buffer[fd]);
+		ft_free(&buffer);
 	return (line);
 }
+
+/* #include <fcntl.h>
+#include <stdio.h>
+
+int	main(void)
+{
+	int	fd;
+	char	*s;
+
+	fd = open("test", O_RDONLY);
+	while ((s = get_next_line(fd)) != NULL)
+	{
+		printf("%s", s);
+		free(s);
+	}
+	return (0);
+} */
